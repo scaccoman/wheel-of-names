@@ -81,8 +81,9 @@ const WheelComponent = () => {
   const unfairMode = Boolean(params.get(unfairModeName));
 
   if (!names || !names.length) {
-    history.replaceState({}, '', `${location.pathname}?names=john,mario,willy,frank,anna,joe`)
-    return <h2>Please provide names via query string params, example: ?names=john,mario,willy,frank,anna,joe</h2>
+    history.replaceState({}, '', `${location.pathname}?names=john,mario,willy,frank,anna,joe`);
+    location.reload();
+    return <h2>Please provide names via query string params, example: ?names=john,mario,willy,frank,anna,joe</h2>;
   }
 
   const [data, setData] = useState<any[]>(getData(names, unfairMode));
