@@ -131,7 +131,7 @@ const WheelComponent = () => {
         setLockWheel(false)
     }, 2000)
 
-    setTimeout(() => !isCopyMeAudioPlaying && toggleCopyMeAudio(), 3000)
+    setTimeout(() => !isCopyMeAudioPlaying && toggleCopyMeAudio(), 5000)
   }
 
   const handleCloseModal = () => {
