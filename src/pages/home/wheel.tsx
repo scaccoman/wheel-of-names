@@ -115,7 +115,7 @@ const WheelComponent = () => {
     params.set(namesParamName, names.filter(name => name !== winnerName).join(','));
 
     setWinner(winnerName);
-    setWinnerText(`${winnerName} will be tomorrow's host!\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?${params.toString()}`);
+    setWinnerText(`@${winnerName} will be tomorrow's host!\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?${params.toString()}`);
     setConfettiColors([winnerBackgroundColor, winnerTextColor]);
     setWinnerStyle({ backgroundColor: winnerBackgroundColor, color: winnerText })
 
