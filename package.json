@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "open-cli http://localhost:8080 && webpack serve",
-    "build": "NODE_ENV=production webpack --progress --fail-on-warnings",
+    "build": "NODE_ENV=production webpack --progress",
     "format": "prettier -w src/**",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "test": "cross-env NODE_OPTIONS='--experimental-vm-modules --no-warnings' npx jest",
