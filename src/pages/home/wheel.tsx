@@ -115,7 +115,7 @@ const WheelComponent = () => {
     const winnerName = capitalizeFirstLetter(winner.option)
     const winnerBackgroundColor = winner.style.backgroundColor;
     const winnerTextColor = winner.style.textColor;
-    params.set(namesParamName, names.filter(name => name !== winnerName).join(','));
+    params.set(namesParamName, names.filter(name => name.toLocaleLowerCase() !== winnerName.toLocaleLowerCase()).join(','));
 
     setWinner(winnerName);
     setWinnerText(`@${winnerName} will be tomorrow's host!\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?${params.toString()}`);
