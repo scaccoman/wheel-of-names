@@ -15,9 +15,7 @@
     "update-version": "standard-version -a",
     "prepare": "husky install",
     "prepare-release": "npm run lint && npm test && npm run build",
-    "release": "npm run prepare-release && npm run update-version",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "release": "npm run prepare-release && npm run update-version"
   },
   "repository": {
     "type": "git",
