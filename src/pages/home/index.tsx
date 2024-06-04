@@ -15,7 +15,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   return (
     <div className={finalClassName}>
       <div className={`${CLASS_NAME}-content-wrapper`}>
-        <h2>Barebones wheel of names</h2>
+        <h1>Wheel of Names</h1>
         <Wheel />
       </div>
     </div>
