@@ -4,6 +4,13 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import ConfettiExplosion from 'react-confetti-explosion';
 
+// @ts-ignore
+import spinWheelMp3 from '../../../public/spin-wheel.mp3';
+// @ts-ignore
+import copyMeWav from '../../../public/copy-me.wav';
+// @ts-ignore
+import congratulationsMp3 from '../../../public/congratulations-deep-voice.mp3';
+
 const lineWidth = 6;
 const lineColor = 'white';
 const namesParamName = 'names';
@@ -53,9 +60,9 @@ const getData = (names: string[], unfairMode: boolean) => names.map((name, index
 }))
 
 const WheelComponent = () => {
-  const [isWheelAudioPlaying, toggleWheelAudio] = useAudio('/spin-wheel.mp3');
-  const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio('/copy-me.wav');
-  const [isCongratulationsAudioPlaying, toggleCongratulationsAudio] = useAudio('/congratulations-deep-voice.mp3');
+  const [isWheelAudioPlaying, toggleWheelAudio] = useAudio(spinWheelMp3);
+  const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio(copyMeWav);
+  const [isCongratulationsAudioPlaying, toggleCongratulationsAudio] = useAudio(congratulationsMp3);
 
   const [showModal, setShowModal] = useState(false);
   const [confettiColors, setConfettiColors] = useState<string[]>([]);

@@ -3,6 +3,7 @@
 /build
 /.pnp
 /.yarn/cache
+/dist
 
 .env
 .idea
