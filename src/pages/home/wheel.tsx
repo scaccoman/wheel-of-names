@@ -5,11 +5,11 @@ import { Modal } from 'react-responsive-modal';
 import ConfettiExplosion from 'react-confetti-explosion';
 
 // @ts-ignore
-import spinWheelMp3 from '../../../public/spin-wheel.mp3';
+import spinWheelMp3 from './spin-wheel.mp3';
 // @ts-ignore
-import copyMeWav from '../../../public/copy-me.wav';
+import copyMeMp3 from './copy-me.mp3';
 // @ts-ignore
-import congratulationsMp3 from '../../../public/congratulations-deep-voice.mp3';
+import congratulationsMp3 from './congratulations-deep-voice.mp3';
 
 const lineWidth = 6;
 const lineColor = 'white';
@@ -61,7 +61,7 @@ const getData = (names: string[], unfairMode: boolean) => names.map((name, index
 
 const WheelComponent = () => {
   const [isWheelAudioPlaying, toggleWheelAudio] = useAudio(spinWheelMp3);
-  const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio(copyMeWav);
+  const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio(copyMeMp3);
   const [isCongratulationsAudioPlaying, toggleCongratulationsAudio] = useAudio(congratulationsMp3);
 
   const [showModal, setShowModal] = useState(false);
