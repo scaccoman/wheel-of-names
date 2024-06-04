@@ -7,6 +7,8 @@ import ConfettiExplosion from 'react-confetti-explosion';
 // @ts-ignore
 import spinWheelMp3 from './spin-wheel.mp3';
 // @ts-ignore
+import crowdCheeringMp3 from './crowd-cheering.mp3';
+// @ts-ignore
 import copyMeMp3 from './copy-me.mp3';
 // @ts-ignore
 import congratulationsMp3 from './congratulations-deep-voice.mp3';
@@ -61,6 +63,7 @@ const getData = (names: string[], unfairMode: boolean) => names.map((name, index
 
 const WheelComponent = () => {
   const [isWheelAudioPlaying, toggleWheelAudio] = useAudio(spinWheelMp3);
+  const [isCrowdAudioPlaying, toggleCrowdAudio] = useAudio(crowdCheeringMp3);
   const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio(copyMeMp3);
   const [isCongratulationsAudioPlaying, toggleCongratulationsAudio] = useAudio(congratulationsMp3);
 
@@ -120,10 +123,12 @@ const WheelComponent = () => {
     setWinnerStyle({ backgroundColor: winnerBackgroundColor, color: winnerText })
 
     setIsExploding(true);
+    isWheelAudioPlaying && toggleWheelAudio()
+    !isCrowdAudioPlaying && toggleCrowdAudio()
+
     setTimeout(() => {
         setShowModal(true)
         setLockWheel(false)
-        isWheelAudioPlaying && toggleWheelAudio()
     }, 2000)
 
     setTimeout(() => !isCopyMeAudioPlaying && toggleCopyMeAudio(), 3000)
