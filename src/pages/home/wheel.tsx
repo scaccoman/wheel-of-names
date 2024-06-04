@@ -164,9 +164,9 @@ const WheelComponent = () => {
                 spinDuration={1.3}
             />
         </div>
-        <button className={'spin-button'} onClick={handleSpinClick}>
+        {/* <button className={'spin-button'} onClick={handleSpinClick}>
             SPIN
-        </button>
+        </button> */}
         {isExploding && <div className="confetti">
             <ConfettiExplosion 
             onComplete={() => setIsExploding(false)} 
