@@ -6,6 +6,7 @@ import { type HomeProps } from './types'
 import { propTypes, defaultProps } from './props'
 
 import './style.scss'
+import Wheel from './wheel'
 
 const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const { className } = props
@@ -14,7 +15,8 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   return (
     <div className={finalClassName}>
       <div className={`${CLASS_NAME}-content-wrapper`}>
-        <h2>React TypeScript Web App Template</h2>
+        <h2>Barebones wheel of names</h2>
+        <Wheel />
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 {
-  "name": "react-ts-template",
+  "name": "wheel-of-names",
   "version": "1.0.0",
-  "description": "A template for a web app built with React and TypeScript.",
+  "description": "Wheel of names",
   "main": "dist/index.js",
   "scripts": {
     "start": "open-cli http://localhost:8080 && webpack serve",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/f3rno64/react-ts-template.git"
+    "url": "git+https://github.com/scaccoman/wheel-of-names.git"
   },
   "keywords": [
     "react",
@@ -35,12 +35,12 @@
     "husky",
     "prettier"
   ],
-  "author": "Cris Mihalache <f3rno64@gmail.com>",
+  "author": "Davide Marucci <scaccoman@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/f3rno64/react-ts-template/issues"
+    "url": "https://github.com/scaccoman/wheel-of-names/issues"
   },
-  "homepage": "https://github.com/f3rno64/react-ts-template#readme",
+  "homepage": "https://github.com/scaccoman/wheel-of-names#readme",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -59,7 +59,10 @@
     "normalize.css": "^8.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-confetti-explosion": "^2.1.2",
+    "react-custom-roulette": "^1.4.1",
+    "react-dom": "^18.2.0",
+    "react-responsive-modal": "^6.4.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.1",
