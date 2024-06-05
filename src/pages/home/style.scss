@@ -117,6 +117,22 @@ textarea {
   margin-top: 25px;
 }
 
+#unfair-mode-button, #mute-button {
+  background-color: #eee;
+  color: rgb(20, 20, 20);
+  border-radius: 5px;
+  // width: 85%;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  outline: 0;
+  transition: 0.1s linear;
+  border: 0;
+  margin: 8px 0 0 0;
+  padding: 10px;
+  text-align: center;
+}
+
 .spin-button:active, .copy-button:active {
   padding-top: 5px;
   background-color: rgb(41, 41, 41);

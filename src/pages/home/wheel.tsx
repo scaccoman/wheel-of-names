@@ -15,17 +15,6 @@ import congratulationsMp3 from './congratulations-deep-voice.mp3';
 
 const lineWidth = 6;
 const lineColor = 'white';
-const unfairModeName = 'unfairMode';
-const randomStyles = [
-    { backgroundColor: '#FFD1DC', textColor: '#505050' },
-    { backgroundColor: '#FFEF96', textColor: '#000033' },
-    { backgroundColor: '#B0E57C', textColor: '#228B22' },
-    { backgroundColor: '#AEC6CF', textColor: '#483D8B' },
-    { backgroundColor: '#C3B1E1', textColor: '#4B0082' },
-    { backgroundColor: '#F0E68C', textColor: '#556B2F' },
-    { backgroundColor: '#F5DEB3', textColor: '#696969' },
-    { backgroundColor: '#FFDAB9', textColor: '#003333' },
-];
 
 const capitalizeFirstLetter = (string: string): string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -51,22 +40,17 @@ const useAudio = (url: string): any => {
     }, []);
   
     return [playing, toggle];
-  };
-
-
-const getData = (names: string[], unfairMode: boolean) => names.map((name, index) => ({
-    option: name,
-    style: randomStyles[index] || randomStyles[Math.floor(Math.random() * randomStyles.length)],
-    optionSize: unfairMode ? Math.floor(Math.random() * 100) : 1
-}))
+};
 
 interface Props {
   names: string[];
   lockWheel: boolean;
-  setLockWheel: React.Dispatch<React.SetStateAction<boolean>>
+  setLockWheel: React.Dispatch<React.SetStateAction<boolean>>;
+  data: any;
+  mute: boolean;
 }
 
-const WheelComponent = ({ names, lockWheel, setLockWheel }: Props) => {
+const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) => {
   const [isWheelAudioPlaying, toggleWheelAudio] = useAudio(spinWheelMp3);
   const [isCrowdAudioPlaying, toggleCrowdAudio] = useAudio(crowdCheeringMp3);
   const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio(copyMeMp3);
@@ -84,21 +68,10 @@ const WheelComponent = ({ names, lockWheel, setLockWheel }: Props) => {
   const [winnerText, setWinnerText] = useState('');
 
   const params = new URLSearchParams(location.search)
-  const unfairMode = Boolean(params.get(unfairModeName));
-
-  const [data, setData] = useState<any[]>(getData(names, unfairMode));
-
-  React.useEffect(() => {
-    setData(names.filter(Boolean).map((name, index) => ({
-        option: name,
-        style: randomStyles[index] || randomStyles[Math.floor(Math.random() * randomStyles.length)],
-        optionSize: unfairMode ? Math.floor(Math.random() * 100) : 1
-      })))
-  }, [names, unfairMode])
 
   const handleSpinClick = () => {
     if (!mustSpin && !lockWheel) {
-        toggleWheelAudio();
+        !mute && toggleWheelAudio();
         const newPrizeNumber = Math.floor(Math.random() * data.length);
         setPrizeNumber(newPrizeNumber);
         setMustSpin(true);
@@ -119,15 +92,15 @@ const WheelComponent = ({ names, lockWheel, setLockWheel }: Props) => {
     setWinnerStyle({ backgroundColor: winnerBackgroundColor, color: winnerText })
 
     setIsExploding(true);
-    isWheelAudioPlaying && toggleWheelAudio()
-    !isCrowdAudioPlaying && toggleCrowdAudio()
+    isWheelAudioPlaying && !mute && toggleWheelAudio()
+    !isCrowdAudioPlaying && !mute && toggleCrowdAudio()
 
     setTimeout(() => {
         setShowModal(true)
         setLockWheel(false)
     }, 2000)
 
-    setTimeout(() => !isCopyMeAudioPlaying && toggleCopyMeAudio(), 5000)
+    setTimeout(() => !isCopyMeAudioPlaying && !mute && toggleCopyMeAudio(), 5000)
   }
 
   const handleCloseModal = () => {
@@ -139,8 +112,8 @@ const WheelComponent = ({ names, lockWheel, setLockWheel }: Props) => {
   const handleCopyClick = () => {
     navigator.clipboard.writeText(winnerText);
     setCopied(true);
-    isCopyMeAudioPlaying && toggleCopyMeAudio()
-    !isCongratulationsAudioPlaying && toggleCongratulationsAudio();
+    isCopyMeAudioPlaying && !mute && toggleCopyMeAudio()
+    !isCongratulationsAudioPlaying && !mute && toggleCongratulationsAudio();
   };
 
   return (
@@ -160,9 +133,6 @@ const WheelComponent = ({ names, lockWheel, setLockWheel }: Props) => {
                 spinDuration={1.3}
             />
         </div>
-        {/* <button className={'spin-button'} onClick={handleSpinClick}>
-            SPIN
-        </button> */}
         {isExploding && <div className="confetti">
             <ConfettiExplosion 
             onComplete={() => setIsExploding(false)} 
