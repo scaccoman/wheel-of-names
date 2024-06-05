@@ -131,6 +131,7 @@ textarea {
   margin: 8px 0 0 0;
   padding: 10px;
   text-align: center;
+  cursor: pointer;
 }
 
 .spin-button:active, .copy-button:active {
@@ -157,6 +158,10 @@ textarea {
 .big-wheel > div {
   max-width: 48vw;
   max-height: 48vw;
+}
+
+.big-wheel {
+  cursor: pointer;
 }
 
 .confetti {
