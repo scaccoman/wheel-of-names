@@ -8,6 +8,10 @@ import { propTypes, defaultProps } from './props'
 import './style.scss'
 import Wheel from './wheel'
 
+// @ts-ignore
+import buttonClickMp3 from './button-click.mp3';
+import { useAudio } from './audio'
+
 const namesParamName = 'names';
 const unfairModeName = 'unfairMode';
 
@@ -34,6 +38,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const params = new URLSearchParams(window.location.search);
   const initialNames = params.get(namesParamName)?.split(',');
 
+  const [buttonClick, toggleButtonClick] = useAudio(buttonClickMp3);
   const [mute, setMute] = React.useState(false);
   const [unfairMode, setUnfairMode] = React.useState(Boolean(params.get(unfairModeName)));
   const [names, setNamesState] = React.useState(initialNames || []);
@@ -57,6 +62,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const handleUnfairMode = (event: any) => {
     if (lockWheel) return;
 
+    toggleButtonClick();
     setUnfairMode(!unfairMode);
   }
 

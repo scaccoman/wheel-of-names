@@ -12,6 +12,7 @@ import crowdCheeringMp3 from './crowd-cheering.mp3';
 import copyMeMp3 from './copy-me.mp3';
 // @ts-ignore
 import congratulationsMp3 from './congratulations-deep-voice.mp3';
+import { useAudio } from './audio';
 
 const lineWidth = 6;
 const lineColor = 'white';
@@ -19,33 +20,6 @@ const lineColor = 'white';
 const capitalizeFirstLetter = (string: string): string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-const useAudio = (url: string): any => {
-    const [audio] = useState(new Audio(url));
-    const [playing, setPlaying] = useState(false);
-  
-    const toggle = () => setPlaying(!playing);
-  
-    React.useEffect(() => {
-        if (playing) {
-          audio.play()
-        } else {
-          audio.pause()
-          audio.currentTime = 0
-        }
-      },
-      [playing]
-    );
-  
-    React.useEffect(() => {
-      audio.addEventListener('ended', () => setPlaying(false));
-      return () => {
-        audio.removeEventListener('ended', () => setPlaying(false));
-      };
-    }, []);
-  
-    return [playing, toggle];
-};
 
 interface Props {
   names: string[];
