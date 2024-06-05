@@ -134,6 +134,10 @@ textarea {
   cursor: pointer;
 }
 
+#unfair-mode-button:active {
+  padding-top: 5px;
+}
+
 .spin-button:active, .copy-button:active {
   padding-top: 5px;
   background-color: rgb(41, 41, 41);
