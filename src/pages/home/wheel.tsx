@@ -27,7 +27,12 @@ const useAudio = (url: string): any => {
     const toggle = () => setPlaying(!playing);
   
     React.useEffect(() => {
-        playing ? audio.play() : audio.pause();
+        if (playing) {
+          audio.play()
+        } else {
+          audio.pause()
+          audio.currentTime = 0
+        }
       },
       [playing]
     );
