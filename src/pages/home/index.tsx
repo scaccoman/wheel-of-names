@@ -17,6 +17,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   const initialNames = params.get(namesParamName)?.split(',');
 
   const [names, setNamesState] = React.useState(initialNames || []);
+  const [lockWheel, setLockWheel] = React.useState(false);
 
   React.useEffect(() => {
     if (!names.length) {
@@ -41,12 +42,13 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
       <div className={`${CLASS_NAME}-content-wrapper`}>
         <h1>Wheel of Names</h1>
         <div className={`${CLASS_NAME}-wheel-wrapper`}>
-          <Wheel names={names} />
+          <Wheel names={names} lockWheel={lockWheel} setLockWheel={setLockWheel} />
           <div className="text-box">
             <div id="name-box-title">Names</div>
             <textarea 
               value={names.join('\n')}
               onChange={handleTextareaChange}
+              disabled={lockWheel}
             />
           </div>
         </div>

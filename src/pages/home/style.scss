@@ -44,7 +44,7 @@
 
 textarea {
   // width: 95vw;  /* 95% of the viewport width */
-  height: 60vh; /* 95% of the viewport height */
+  height: 50vh; /* 95% of the viewport height */
   max-width: 100%; /* Ensure it does not overflow the viewport */
   max-height: 100%; /* Ensure it does not overflow the viewport */
   margin: 2.5vh 2.5vw; /* Center it with some space around */
@@ -52,6 +52,7 @@ textarea {
   padding: 10px; /* Optional padding for better text readability */
   border: 1px solid #ccc; /* Optional border for better visibility */
   border-radius: 5px; /* Optional rounded corners */
+  outline: none;
 }
 
 .App {

@@ -61,10 +61,12 @@ const getData = (names: string[], unfairMode: boolean) => names.map((name, index
 }))
 
 interface Props {
-  names: string[]
+  names: string[];
+  lockWheel: boolean;
+  setLockWheel: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const WheelComponent = ({ names }: Props) => {
+const WheelComponent = ({ names, lockWheel, setLockWheel }: Props) => {
   const [isWheelAudioPlaying, toggleWheelAudio] = useAudio(spinWheelMp3);
   const [isCrowdAudioPlaying, toggleCrowdAudio] = useAudio(crowdCheeringMp3);
   const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio(copyMeMp3);
@@ -77,7 +79,6 @@ const WheelComponent = ({ names }: Props) => {
   const [isExploding, setIsExploding] = React.useState(false);
 
   const [mustSpin, setMustSpin] = useState(false);
-  const [lockWheel, setLockWheel] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
   const [winner, setWinner] = useState('');
   const [winnerText, setWinnerText] = useState('');
@@ -101,11 +102,11 @@ const WheelComponent = ({ names }: Props) => {
         const newPrizeNumber = Math.floor(Math.random() * data.length);
         setPrizeNumber(newPrizeNumber);
         setMustSpin(true);
+        setLockWheel(true);
     }
   }
 
   const handleStopSpinning = () => {
-    setLockWheel(true);
     setMustSpin(false);
     const winner = data[prizeNumber];
     const winnerName = capitalizeFirstLetter(winner.option)
