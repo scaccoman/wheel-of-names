@@ -15,7 +15,6 @@ import congratulationsMp3 from './congratulations-deep-voice.mp3';
 
 const lineWidth = 6;
 const lineColor = 'white';
-const namesParamName = 'names';
 const unfairModeName = 'unfairMode';
 const randomStyles = [
     { backgroundColor: '#FFD1DC', textColor: '#505050' },
@@ -61,7 +60,11 @@ const getData = (names: string[], unfairMode: boolean) => names.map((name, index
     optionSize: unfairMode ? Math.floor(Math.random() * 100) : 1
 }))
 
-const WheelComponent = () => {
+interface Props {
+  names: string[]
+}
+
+const WheelComponent = ({ names }: Props) => {
   const [isWheelAudioPlaying, toggleWheelAudio] = useAudio(spinWheelMp3);
   const [isCrowdAudioPlaying, toggleCrowdAudio] = useAudio(crowdCheeringMp3);
   const [isCopyMeAudioPlaying, toggleCopyMeAudio] = useAudio(copyMeMp3);
@@ -80,19 +83,12 @@ const WheelComponent = () => {
   const [winnerText, setWinnerText] = useState('');
 
   const params = new URLSearchParams(location.search)
-  const names = params.get(namesParamName)?.split(',');
   const unfairMode = Boolean(params.get(unfairModeName));
-
-  if (!names || !names.length) {
-    history.replaceState({}, '', `${location.pathname}?names=john,mario,willy,frank,anna,joe`);
-    location.reload();
-    return <h2>Please provide names via query string params, example: ?names=john,mario,willy,frank,anna,joe</h2>;
-  }
 
   const [data, setData] = useState<any[]>(getData(names, unfairMode));
 
-  React.useCallback(() => {
-    setData(names.map((name, index) => ({
+  React.useEffect(() => {
+    setData(names.filter(Boolean).map((name, index) => ({
         option: name,
         style: randomStyles[index] || randomStyles[Math.floor(Math.random() * randomStyles.length)],
         optionSize: unfairMode ? Math.floor(Math.random() * 100) : 1
@@ -115,7 +111,6 @@ const WheelComponent = () => {
     const winnerName = capitalizeFirstLetter(winner.option)
     const winnerBackgroundColor = winner.style.backgroundColor;
     const winnerTextColor = winner.style.textColor;
-    params.set(namesParamName, names.filter(name => name.toLocaleLowerCase() !== winnerName.toLocaleLowerCase()).join(','));
 
     setWinner(winnerName);
     setWinnerText(`@${winnerName} will be tomorrow's host!\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?${params.toString()}`);
