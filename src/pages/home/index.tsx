@@ -102,7 +102,7 @@ const Home: React.FC<HomeProps> = (props: HomeProps) => {
   return (
     <div className={finalClassName}>
       <div className={`${CLASS_NAME}-content-wrapper`}>
-        <h1>Wheel of Names</h1>
+        <h1>{unfairMode ? 'Unfair ' : ''}Wheel of Names</h1>
         <div className={`${CLASS_NAME}-wheel-wrapper`}>
           <Wheel names={names} lockWheel={lockWheel} setLockWheel={setLockWheel} data={data} mute={mute} />
           <div className="text-box">
