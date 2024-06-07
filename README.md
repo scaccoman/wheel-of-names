@@ -13,7 +13,7 @@ Seriously, it's just a static website! It costs next to nothing to run, and ther
 
 ## Disclaimer
 
-*The code is beyond horrible. I hacked this together in a couple of days, so please don't judge me.*
+**The code is beyond horrible. I hacked this together in a couple of days, so please don't judge me.**
 
 ## Included Tools & Technologies
 
