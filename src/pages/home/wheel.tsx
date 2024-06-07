@@ -17,6 +17,8 @@ import { useAudio } from './audio';
 const lineWidth = 6;
 const lineColor = 'white';
 
+const namesParamName = 'names';
+
 const capitalizeFirstLetter = (string: string): string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -65,8 +67,10 @@ const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) =
     const winnerBackgroundColor = winner.style.backgroundColor;
     const winnerTextColor = winner.style.textColor;
 
+    params.set(namesParamName, names.filter(name => name.toLocaleLowerCase() !== winnerName.toLocaleLowerCase()).join(','))
+
     setWinner(winnerName);
-    setWinnerText(`@${winnerName} will be tomorrow's host!\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?${params.toString()}`);
+    setWinnerText(`@${winnerName} will be the next host!\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?${params.toString()}`);
     setConfettiColors([winnerBackgroundColor, winnerTextColor]);
     setWinnerStyle({ backgroundColor: winnerBackgroundColor, color: winnerText })
 
