@@ -19,6 +19,8 @@ const lineColor = 'white';
 
 const namesParamName = 'names';
 
+const fallbackData = [{ option: '' }];
+
 const capitalizeFirstLetter = (string: string): string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -105,7 +107,7 @@ const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) =
             <Wheel
                 mustStartSpinning={mustSpin}
                 prizeNumber={prizeNumber}
-                data={data}
+                data={data.length ? data : fallbackData}
                 onStopSpinning={handleStopSpinning}
                 outerBorderColor={lineColor}
                 outerBorderWidth={lineWidth}
