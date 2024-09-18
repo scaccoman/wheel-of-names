@@ -73,6 +73,11 @@ const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) =
 
     setWinner(winnerName);
     setWinnerText(`@${winnerName} will be the next host!\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?${params.toString()}`);
+    if (data.length === 2) {
+      const [otherWinner] = data.filter((entries: any) => entries.option !== winner.option);
+      const otherWinnerName = capitalizeFirstLetter(otherWinner.option)
+      setWinnerText(`@${winnerName} will be the next host!\nThe day after tomorrow's winner is ${otherWinnerName}\nNew wheel: ${location.protocol}//${location.host}${location.pathname}?names=`);
+    }
     setConfettiColors([winnerBackgroundColor, winnerTextColor]);
     setWinnerStyle({ backgroundColor: winnerBackgroundColor, color: winnerText })
 
@@ -83,9 +88,8 @@ const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) =
     setTimeout(() => {
         setShowModal(true)
         setLockWheel(false)
+        setTimeout(() => !isCopyMeAudioPlaying && !mute && !copied && toggleCopyMeAudio(), 3000)
     }, 2000)
-
-    setTimeout(() => !isCopyMeAudioPlaying && !mute && toggleCopyMeAudio(), 5000)
   }
 
   const handleCloseModal = () => {
@@ -95,10 +99,10 @@ const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) =
   }
 
   const handleCopyClick = () => {
-    navigator.clipboard.writeText(winnerText);
-    setCopied(true);
     isCopyMeAudioPlaying && !mute && toggleCopyMeAudio()
     !isCongratulationsAudioPlaying && !mute && toggleCongratulationsAudio();
+    navigator.clipboard.writeText(winnerText);
+    setCopied(true);
   };
 
   return (

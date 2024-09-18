@@ -4,7 +4,7 @@ export const useAudio = (url: string): any => {
     const [audio] = useState(new Audio(url));
     const [playing, setPlaying] = useState(false);
   
-    const toggle = () => setPlaying(!playing);
+    const toggle = (status?: boolean) => setPlaying(status ?? !playing);
   
     useEffect(() => {
         if (playing) {
