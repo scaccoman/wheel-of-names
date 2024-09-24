@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Wheel } from 'react-custom-roulette';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -50,6 +50,12 @@ const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) =
   const [winner, setWinner] = useState('');
   const [winnerText, setWinnerText] = useState('');
 
+  const copiedRef = useRef(copied);
+
+  useEffect(() => {
+    copiedRef.current = copied;
+  }, [copied]);
+
   const params = new URLSearchParams(location.search)
 
   const handleSpinClick = () => {
@@ -88,7 +94,7 @@ const WheelComponent = ({ names, lockWheel, setLockWheel, data, mute }: Props) =
     setTimeout(() => {
         setShowModal(true)
         setLockWheel(false)
-        setTimeout(() => !isCopyMeAudioPlaying && !mute && !copied && toggleCopyMeAudio(), 3000)
+        setTimeout(() => !isCopyMeAudioPlaying && !mute && !copiedRef.current && toggleCopyMeAudio(), 3000)
     }, 2000)
   }
 
