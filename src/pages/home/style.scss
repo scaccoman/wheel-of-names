@@ -1,3 +1,5 @@
+$breakpoint-tablet: 1024px;
+
 .page-home {
   height: 100%;
 
@@ -24,6 +26,10 @@
     align-items: center;
     justify-content: center;
     position: relative;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -35,7 +41,14 @@
   background-color: white; /* Optional: add some styling */
   padding: 10px; /* Optional: add some padding */
   border-radius: 5px; /* Optional: add rounded corners */
-  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Optional: add some shadow */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional: add some shadow */
+
+  @media (max-width: $breakpoint-tablet) {
+    position: static;
+    transform: none;
+    width: 70%;
+    margin-top: 20px;
+  }
 }
 
 #name-box-title {
@@ -53,6 +66,12 @@ textarea {
   border: 1px solid #ccc; /* Optional border for better visibility */
   border-radius: 5px; /* Optional rounded corners */
   outline: none;
+
+  @media (max-width: $breakpoint-tablet) {
+    height: auto;
+    width: 100%;
+    min-height: 100px;
+  }
 }
 
 .App {
@@ -85,7 +104,8 @@ textarea {
   color: #61dafb;
 }
 
-.spin-button, .copy-button {
+.spin-button,
+.copy-button {
   margin-top: 22px;
   background-color: rgb(20, 20, 20);
   border: 0;
@@ -117,7 +137,8 @@ textarea {
   margin-top: 25px;
 }
 
-#unfair-mode-button, #mute-button {
+#unfair-mode-button,
+#mute-button {
   background-color: #eee;
   color: rgb(20, 20, 20);
   border-radius: 5px;
@@ -138,7 +159,8 @@ textarea {
   padding-top: 5px;
 }
 
-.spin-button:active, .copy-button:active {
+.spin-button:active,
+.copy-button:active {
   padding-top: 5px;
   background-color: rgb(41, 41, 41);
 }
@@ -160,8 +182,16 @@ textarea {
 }
 
 .big-wheel > div {
-  max-width: 48vw;
-  max-height: 48vw;
+  height: 80dvh;
+  width: unset;
+  aspect-ratio: 1;
+  max-height: none;
+  max-width: none;
+
+  @media (max-width: $breakpoint-tablet) {
+    height: unset;
+    width: 90dvw;
+  }
 }
 
 .big-wheel {
@@ -175,7 +205,8 @@ textarea {
   transform: translate(-50%, -50%);
 }
 
-#modal-description, #modal-title {
+#modal-description,
+#modal-title {
   text-align: center;
 }
 
