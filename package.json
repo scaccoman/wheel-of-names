@@ -56,9 +56,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-confetti-explosion": "^2.1.2",
-    "react-custom-roulette": "^1.4.1",
-    "react-dom": "^18.2.0",
-    "react-responsive-modal": "^6.4.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.1",

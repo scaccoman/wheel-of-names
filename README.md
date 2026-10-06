@@ -1,38 +1,37 @@
 # Wheel of Names
 
-Spin a wheel to pick the next name. No ads, no accounts, and nothing stored on a server — the list lives in the URL, so a wheel is just a link you can send.
+A static wheel for picking the next name. No ads, no accounts, and the list is stored in the URL.
 
-**[Open the live wheel](https://wheel.scaccoman.com)**
+**[Try it](https://wheel.scaccoman.com)**
 
-![Wheel of Names, with a pastel wheel and an editable list of names](./docs/preview.png)
+![Wheel of Names](./docs/preview.png)
 
-## What it does
+## Features
 
-- Click the wheel to spin. The winner gets a short celebration, then drops off the list so the next round picks someone else.
-- Edit names in the box on the side. The address bar stays in sync, which makes the current wheel easy to share or bookmark.
-- Unfair mode gives each slice a random size.
-- Sound plays on spin and when someone wins.
-- The layout works on phones and on wide screens.
+- Spin from the wheel, the Spin button, or the Space bar. Skip with the button or Escape.
+- The winner is announced as typed. Copy message keeps the host note and the link for the next round.
+- Add, remove, shuffle, or edit the names. The address bar updates as you go.
+- Unfair mode gives every name a random slice. Bigger slices are more likely to win.
+- Light and dark themes, and a mute button. M mutes, except while typing.
+- Works on phones and wide screens.
 
-I built it because every wheel I found wanted an account, an ad, or both. This one is a static page.
+## Local development
 
-## Run it locally
-
-The repo pins Yarn 4.
+Yarn 4 is pinned in the repo.
 
 ```bash
 yarn
 yarn start
 ```
 
-- `yarn test` runs Jest
-- `yarn lint` runs ESLint
-- `yarn build` writes a production build to `dist/`
+- `yarn test`
+- `yarn lint`
+- `yarn build` outputs to `dist/`
 
 ## Stack
 
-React, TypeScript, Webpack, SCSS, and Jest.
+React, TypeScript, Webpack, SCSS, Jest.
 
 ## License
 
-Distributed under the MIT license. See [LICENSE.md](./LICENSE.md).
+MIT. See [LICENSE.md](./LICENSE.md).

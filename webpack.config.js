@@ -35,6 +35,11 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  // Native directory watches run out of file handles on this tree.
+  watchOptions: {
+    ignored: /[\\/](node_modules|\.git|\.yarn|dist|coverage)([\\/]|$)/,
+    poll: 1000
+  },
   plugins: [
     new CopyWebpackPlugin({
       patterns: [{ from: 'public' }]

@@ -1,6 +1,7 @@
 export default {
   clearMocks: true,
   preset: 'ts-jest/presets/default-esm',
+  setupFilesAfterEnv: ['<rootDir>/mocks/setup.ts'],
 
   coverageDirectory: '<rootDir>/coverage',
   collectCoverageFrom: [
@@ -27,6 +28,7 @@ export default {
   },
 
   moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': '<rootDir>/mocks/style.js'
+    '\\.(css|less|sass|scss)$': '<rootDir>/mocks/style.js',
+    '\\.(mp3|png|svg|jpg|jpeg|gif|ogg|wav)$': '<rootDir>/mocks/file.js'
   }
 }

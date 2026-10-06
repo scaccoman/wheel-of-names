@@ -3,21 +3,26 @@
  */
 
 import '@testing-library/jest-dom'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import UI from '../'
 
 describe('components:ui', () => {
-  it('matches snapshot with default test props', async () => {
-    const { container } = render(<UI />)
-
-    expect(container).toMatchSnapshot()
+  beforeEach(() => {
+    window.history.replaceState({}, '', window.location.pathname)
   })
 
-  it('uses the provided class name', async () => {
-    const className = 'test-class'
-    const { container } = render(<UI className={className} />)
+  it('renders the wheel', () => {
+    render(<UI />)
 
-    expect(container).toMatchSnapshot()
+    expect(
+      screen.getByRole('heading', { name: 'Wheel of Names' })
+    ).toBeInTheDocument()
+  })
+
+  it('uses the provided class name', () => {
+    const { container } = render(<UI className="test-class" />)
+
+    expect(container.firstChild).toHaveClass('component-ui', 'test-class')
   })
 })
