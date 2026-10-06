@@ -82,8 +82,9 @@ const NamesCard = ({
     }
 
     const list = listRef.current
-    if (list !== null) {
-      list.scrollTop = list.scrollHeight
+    const row = list?.querySelector('.name-row.is-new:last-of-type')
+    if (row instanceof HTMLElement) {
+      row.scrollIntoView({ block: 'nearest' })
     }
   }, [highlight, names])
 
