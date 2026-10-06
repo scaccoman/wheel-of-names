@@ -1,7 +1,7 @@
 {
   "name": "wheel-of-names",
   "version": "1.0.0",
-  "description": "Wheel of names",
+  "description": "Ad-free wheel of names you can share with a link",
   "main": "dist/index.js",
   "scripts": {
     "start": "open-cli http://localhost:8080 && webpack serve",
@@ -22,25 +22,18 @@
     "url": "git+https://github.com/scaccoman/wheel-of-names.git"
   },
   "keywords": [
+    "wheel",
+    "names",
+    "raffle",
     "react",
-    "template",
-    "typescript",
-    "boilerplate",
-    "jest",
-    "scss",
-    "webpack",
-    "eslint",
-    "babel",
-    "postcss",
-    "husky",
-    "prettier"
+    "typescript"
   ],
   "author": "Davide Marucci <scaccoman@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/scaccoman/wheel-of-names/issues"
   },
-  "homepage": "https://github.com/scaccoman/wheel-of-names#readme",
+  "homepage": "https://wheel.scaccoman.com",
   "browserslist": {
     "production": [
       ">0.2%",
